@@ -47,22 +47,20 @@ public class Cat extends Application {
         upperRightImage3.setPreserveRatio(true); // Preserve the aspect ratio of the image
 
         ImageView upperRightImage4 = new ImageView(new Image(Cat.class.getResource("catcatgif.gif").toString()));
-        VBox vb1= new VBox();
-        vb1.getChildren().add(upperRightImage4);
-        vb1.setAlignment(Pos.CENTER_LEFT);
 
-        // Create an HBox for the upper right section with the image views
+        HBox hb= new HBox();
+        hb.getChildren().add(upperRightImage4);
+        hb.setAlignment(Pos.CENTER_LEFT);
+
         GridPane upperRightGrid = new GridPane();
         upperRightGrid.setHgap(10);
         upperRightGrid.add(upperRightImage1, 1, 0);
         upperRightGrid.add(upperRightImage2, 2, 0);
         upperRightGrid.add(upperRightImage3, 3, 0);
-        upperRightGrid.add(vb1,0,1);
+        upperRightGrid.add(hb,0,1);
         upperRightGrid.setAlignment(Pos.TOP_RIGHT);
 
-        Label centerSpace1 = new Label(" ");
-        Label centerSpace2 = new Label(" ");
-        Label centerLabel1 = new Label("Unleash the ");
+        Label centerLabel1 = new Label("Unleash the");
         Label centerLabel2 = new Label("Feline Fun!");
         Font font1 = Font.font("Courier New", FontWeight.BOLD, 40);
         // Set the font on the Label
@@ -78,9 +76,12 @@ public class Cat extends Application {
         Button centerButton = new Button("       Play !       ");
 
         // Create a VBox for the upper left section with the label
-        VBox vb= new VBox();
-        vb.getChildren().addAll(centerSpace1,centerSpace2,centerLabel1,centerLabel2,
+        FlowPane flowPane = new FlowPane(centerLabel1,centerLabel2,
                 centerText1,centerText2,centerSpace3,centerButton);
+        flowPane.setAlignment(Pos.CENTER_LEFT);
+
+        VBox vb= new VBox();
+        vb.getChildren().add(centerButton);
         vb.setAlignment(Pos.CENTER_LEFT);
 
         // Create a GridPane for the middle section with the menu bar and label
@@ -96,7 +97,8 @@ public class Cat extends Application {
 
         upperLeftGrid.add(upperLeftLabel, 0, 0);
         upperLeftGrid.setAlignment(Pos.TOP_LEFT);
-        upperLeftGrid.add(vb,2,2);
+        upperLeftGrid.add(flowPane,2,2);
+        upperLeftGrid.add(vb,2,3);
 
         // Create a BorderPane and set the top, center, and right sections
         BorderPane root = new BorderPane();
