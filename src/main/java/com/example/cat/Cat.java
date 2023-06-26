@@ -68,12 +68,24 @@ public class Cat extends Application {
         centerLabel2.setFont(font1);
         Label centerText1 = new Label("Play Cat Friends and Discover ");
         Label centerText2 = new Label("a World of Whiskered Adventures!");
-        Font font2 = Font.font("Courier New",15);
+        Font font2 = Font.font("Courier New",FontWeight.BOLD,15);
         // Set the font on the Label
         centerText1.setFont(font2);
         centerText2.setFont(font2);
         Label centerSpace3 = new Label(" ");
+
         Button centerButton = new Button("       Play !       ");
+        centerButton.setStyle("-fx-padding: 8 15 15 15;" +
+                "    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;" +
+                "    -fx-background-radius: 8;" +
+                "    -fx-background-color: " +
+                "        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%)," +
+                "        #9d4024," +
+                "        #d86e3a," +
+                "        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);" +
+                "    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" +
+                "    -fx-font-weight: bold;" +
+                "    -fx-font-size: 1.1em;");
 
         // Create a VBox for the upper left section with the label
         FlowPane flowPane = new FlowPane(centerLabel1,centerLabel2,
