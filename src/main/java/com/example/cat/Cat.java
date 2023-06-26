@@ -1,8 +1,10 @@
 package com.example.cat;
 
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Camera;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,7 +12,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 
 import javafx.scene.text.Font;
@@ -74,7 +76,7 @@ public class Cat extends Application {
         centerText2.setFont(font2);
         Label centerSpace3 = new Label(" ");
 
-        Button centerButton = new Button("       Play !       ");
+        Button centerButton = new Button("   Play !   ");
         centerButton.setStyle("-fx-padding: 8 15 15 15;" +
                 "    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;" +
                 "    -fx-background-radius: 8;" +
@@ -85,7 +87,73 @@ public class Cat extends Application {
                 "        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);" +
                 "    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" +
                 "    -fx-font-weight: bold;" +
-                "    -fx-font-size: 1.1em;");
+                "    -fx-font-size: 1.1em;"+
+                "    -fx-hover-background-color: linear-gradient(#2A5058, #61a2b1);");
+
+        centerButton.setOnMouseEntered(event -> {
+            centerButton.setStyle("-fx-padding: 8 15 15 15;" +
+                    "    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;" +
+                    "    -fx-background-radius: 8;" +
+                    "    -fx-background-color: " +
+                    "        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%)," +
+                    "        #9d4024," +
+                    "        #d86e3a," +
+                    "        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);" +
+                    "    -fx-font-weight: bold;" +
+                    "    -fx-font-size: 1.1em;"+
+                    "    -fx-hover-background-color: linear-gradient(#61a2b1, #2A5058);");
+        });
+        centerButton.setOnMouseExited(event -> {
+            centerButton.setStyle("-fx-padding: 8 15 15 15;" +
+                    "    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;" +
+                    "    -fx-background-radius: 8;" +
+                    "    -fx-background-color: " +
+                    "        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%)," +
+                    "        #9d4024," +
+                    "        #d86e3a," +
+                    "        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);" +
+                    "    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" +
+                    "    -fx-font-weight: bold;" +
+                    "    -fx-font-size: 1.1em;"+
+                    "    -fx-hover-background-color: linear-gradient(#2A5058, #61a2b1);");
+        });
+
+        // Pressed style
+        centerButton.setOnMousePressed(event -> {
+            centerButton.setStyle("-fx-padding: 8 15 15 15;" +
+                    "    -fx-background-insets: 0,7 0 0 0, 7 0 5 0, 7 0 0 0;" +
+                    "    -fx-background-radius: 8;" +
+                    "    -fx-background-color: " +
+                    "        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%)," +
+                    "        #9d4024," +
+                    "        #d86e3a," +
+                    "        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);" +
+                    "    -fx-font-weight: bold;" +
+                    "    -fx-font-size: 1.1em;"+
+                    "    -fx-hover-background-color: linear-gradient(#61a2b1, #2A5058);");
+        });
+        centerButton.setOnMouseReleased(event -> {
+            centerButton.setStyle("-fx-padding: 8 15 15 15;" +
+                    "    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;" +
+                    "    -fx-background-radius: 8;" +
+                    "    -fx-background-color: " +
+                    "        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%)," +
+                    "        #9d4024," +
+                    "        #d86e3a," +
+                    "        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);" +
+                    "    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );" +
+                    "    -fx-font-weight: bold;" +
+                    "    -fx-font-size: 1.1em;"+
+                    "    -fx-hover-background-color: linear-gradient(#2A5058, #61a2b1);");
+        });
+
+        // Handle button click
+        centerButton.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                System.out.println("Button clicked");
+            }
+        });
+
 
         // Create a VBox for the upper left section with the label
         FlowPane flowPane = new FlowPane(centerLabel1,centerLabel2,
